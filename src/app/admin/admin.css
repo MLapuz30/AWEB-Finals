@@ -1,0 +1,46 @@
+/* ── Shake (wrong password) ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-6px); }
+  80%       { transform: translateX(6px); }
+}
+.admin-shake { animation: shake 0.4s ease; }
+
+/* ── Login-success toast slide-in ── */
+@keyframes slide-down {
+  from { opacity: 0; transform: translate(-50%, -16px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+.admin-toast { animation: slide-down 0.3s ease forwards; }
+
+/* ── Progress bar grow-in ── */
+@keyframes bar-grow {
+  from { width: 0; }
+}
+.admin-bar { animation: bar-grow 0.8s ease forwards; }
+
+/* ── Category badges ── */
+.badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.badge-police    { background: rgba(17,94,89,0.5);    color: #5eead4; border: 1px solid rgba(20,184,166,0.35); }
+.badge-fire      { background: rgba(154,52,18,0.5);   color: #fdba74; border: 1px solid rgba(249,115,22,0.35); }
+.badge-hospital  { background: rgba(30,58,138,0.5);   color: #93c5fd; border: 1px solid rgba(59,130,246,0.35); }
+.badge-ambulance { background: rgba(113,63,18,0.5);   color: #fde047; border: 1px solid rgba(234,179,8,0.35); }
+.badge-barangay  { background: rgba(88,28,135,0.5);   color: #d8b4fe; border: 1px solid rgba(168,85,247,0.35); }
+
+/* ── Prevent iOS input zoom ── */
+@media (max-width: 640px) {
+  input[type="text"],
+  input[type="password"] {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,12 @@
+/* Inherit glow/feature-card styles from home — reuse same class names */
+/* These are defined globally via styles.css or home.css; nothing extra needed here unless overrides are required. */
+
+/* Stat card numbers pop-in on load */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stat-value {
+  animation: count-up 0.6s ease both;
+}

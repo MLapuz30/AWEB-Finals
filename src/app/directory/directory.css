@@ -1,0 +1,16 @@
+/* ── Hotline card hover ── */
+.hotline-card {
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+.hotline-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(220, 38, 38, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ── Prevent iOS input zoom ── */
+@media (max-width: 640px) {
+    input[type="text"] {
+        font-size: 16px;
+    }
+    }

@@ -1,0 +1,157 @@
+<!-- Fixed Background Orbs — left/right persist across all sections on scroll -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div class="glow glow-left"></div>
+    <div class="glow glow-right"></div>
+</div>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center font-montserrat overflow-hidden px-4">
+
+    <!-- Center orb anchored to hero only -->
+    <div class="glow glow-center"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center text-center" [appFadeUp]="0">
+
+        <!-- Pill Badge -->
+        <div class="mb-8 inline-flex items-center gap-2 bg-[#511024] border border-[#790723] text-[#FF5460] font-semibold text-xs rounded-full px-4 py-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+        </svg>
+        Emergency Response Platform
+        </div>
+
+        <!-- Headline -->
+        <h1 class="leading-tight mb-6">
+        <span class="block text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">One Click Can</span>
+        <span class="block font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-[linear-gradient(to_right,#FF5460,#E80000)] bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">Save a Life</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="max-w-xs sm:max-w-lg md:max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-10 text-white/60">
+        Access verified emergency hotlines instantly. ResQ connects your community with life-saving services in real-time.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 justify-center mb-14 w-full px-2">
+        <a
+            href="/directory"
+            class="btn-primary w-full sm:w-auto bg-[#FF0000] text-white font-bold text-sm px-9 py-4 rounded-2xl uppercase tracking-widest hover:bg-red-700 hover:scale-[1.02] transition-all duration-300 cursor-pointer text-center"
+        >
+            OPEN DIRECTORY &rarr;
+        </a>
+        <a
+            href="/about"
+            class="w-full sm:w-auto border border-white/40 text-white font-bold text-sm px-9 py-4 rounded-2xl uppercase tracking-widest hover:bg-white/10 hover:scale-105 transition-all cursor-pointer text-center"
+        >
+            LEARN MORE
+        </a>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-bounce flex flex-col items-center gap-2 text-white/40">
+        <svg
+            width="24"
+            height="38"
+            viewBox="0 0 24 38"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <rect x="1" y="1" width="22" height="36" rx="11" />
+            <line x1="12" y1="9" x2="12" y2="15" stroke-linecap="round" stroke-width="2" />
+        </svg>
+        </div>
+
+    </div>
+</section>
+
+<!-- Why Choose ResQ? Section -->
+<section class="relative font-montserrat overflow-hidden px-4 sm:px-6 py-16 sm:py-24">
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+
+        <!-- Section Header -->
+        <div class="text-center mb-16" [appFadeUp]="0">
+        <h2 class="text-white font-bold text-3xl sm:text-4xl md:text-5xl mb-4">Why Choose ResQ?</h2>
+        <p class="text-[#98A0B0] text-base sm:text-lg">Built for speed, reliability, and accessibility in emergency situations</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: Instant Access -->
+        <div class="feature-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 sm:gap-6" [appFadeUp]="0">
+            <div class="bg-red-900/40 p-3 rounded-lg w-fit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#FF5460]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            </div>
+            <div>
+            <h3 class="text-white font-bold text-lg sm:text-xl mb-3">Instant Access</h3>
+            <p class="text-[#98A0B0] leading-relaxed">One-tap calling to emergency services. No delays, no complications.</p>
+            </div>
+        </div>
+
+        <!-- Card 2: Location-Based -->
+        <div class="feature-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 sm:gap-6" [appFadeUp]="150">
+            <div class="bg-red-900/40 p-3 rounded-lg w-fit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#FF5460]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            </div>
+            <div>
+            <h3 class="text-white font-bold text-lg sm:text-xl mb-3">Location-Based</h3>
+            <p class="text-[#98A0B0] leading-relaxed">Find the nearest emergency service in your barangay automatically.</p>
+            </div>
+        </div>
+
+        <!-- Card 3: Verified Contacts -->
+        <div class="feature-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 sm:gap-6" [appFadeUp]="300">
+            <div class="bg-red-900/40 p-3 rounded-lg w-fit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#FF5460]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            </div>
+            <div>
+            <h3 class="text-white font-bold text-lg sm:text-xl mb-3">Verified Contacts</h3>
+            <p class="text-[#98A0B0] leading-relaxed">All hotlines are verified and regularly updated by local officials.</p>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="relative font-montserrat px-4 sm:px-6 py-16 sm:py-24 overflow-hidden">
+
+    <div class="relative z-10 max-w-4xl mx-auto" [appFadeUp]="0">
+        <!-- Card -->
+        <div class="relative overflow-hidden rounded-3xl px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 text-center bg-[linear-gradient(135deg,#1a0510_0%,#5c0a1a_40%,#790723_70%,#3d0612_100%)]">
+
+        <!-- Decorative blurred orb inside card -->
+        <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-red-700/30 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-red-900/40 blur-3xl pointer-events-none"></div>
+
+        <!-- Subtle grid overlay -->
+        <div class="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+
+        <!-- Border glow ring -->
+        <div class="absolute inset-0 rounded-3xl border border-white/10 pointer-events-none"></div>
+
+        <div class="relative z-10">
+            <h2 class="text-white font-black font-semibold text-xl sm:text-2xl md:text-3xl mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Ready to Get Started?</h2>
+            <p class="text-white/60 text-xs sm:text-sm mb-8 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto">Access emergency hotlines in your area and save them for instant access.</p>
+            <a
+            href="/directory"
+            class="inline-block bg-white text-red-700 font-bold text-sm uppercase tracking-widest px-10 py-3.5 rounded-xl hover:bg-red-600 hover:text-white transition-all duration-300 cursor-pointer shadow-lg"
+            >
+            EXPLORE DIRECTORY
+            </a>
+        </div>
+        </div>
+    </div>
+</section>

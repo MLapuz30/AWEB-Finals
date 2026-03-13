@@ -1,3 +1,124 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #050C1E, #050C1E, #321125);
+  min-height: 100vh;
+}
+
+/* ── Keyframes ── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); }
+}
+
+/* ── Blurred glow orbs ── */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(90px);
+}
+
+.glow-center {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, #a01030 0%, transparent 60%);
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -45%);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.glow-left {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #6b1525 0%, transparent 70%);
+  left: -130px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: pulse-glow 5s ease-in-out infinite 2s;
+}
+
+.glow-right {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #6b1525 0%, transparent 70%);
+  right: -130px;
+  top: 60%;
+  transform: translateY(-50%);
+  animation: pulse-glow 5s ease-in-out infinite 1s;
+}
+
+.glow-mid {
+  top: 50%;
+}
+
+@media (max-width: 768px) {
+  .glow-center { width: 320px; height: 320px; }
+  .glow-left, .glow-right { width: 200px; height: 200px; left: -60px; }
+  .glow-right { left: auto; right: -60px; }
+}
+
+@media (max-width: 480px) {
+  .glow-center { width: 220px; height: 220px; }
+  .glow-left, .glow-right { display: none; }
+}
+
+/* ── Feature cards ── */
+.feature-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(220, 38, 38, 0.6);
+}
+
+/* ── Scroll bounce ── */
+.scroll-bounce {
+  animation: scroll-bounce 1.8s ease-in-out infinite;
+}
+
+/* ── Fade-up scroll / page-load reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Primary button shimmer hover ── */
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
+}

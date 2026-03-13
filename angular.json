@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "aweb-final-project": {
+    "RESQ": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "aweb-final-project:build:production"
+              "buildTarget": "RESQ:build:production"
             },
             "development": {
-              "buildTarget": "aweb-final-project:build:development"
+              "buildTarget": "RESQ:build:development"
             }
           },
           "defaultConfiguration": "development"
