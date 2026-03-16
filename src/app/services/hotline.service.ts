@@ -53,4 +53,8 @@ import { Injectable } from '@angular/core';
     remove(id: number): void {
         this.hotlines = this.hotlines.filter(h => h.id !== id);
     }
+
+    getEmergencyNumber(): string {
+        return '911';
+    }
     }
