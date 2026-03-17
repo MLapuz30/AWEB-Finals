@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { HotlineService, Hotline } from '../services/hotline.service';
@@ -10,10 +10,12 @@ import { FadeUpDirective } from '../fade-up.directive';
   templateUrl: './directory.html',
   styleUrl: './directory.css',
 })
-export class Directory {
+export class Directory implements OnInit {
   searchTerm = '';
   activeCategory = 'All';
-  savedIds = new Set<number>();
+  savedIds = new Set<string>();
+  allHotlines: Hotline[] = [];
+  filteredHotlines: Hotline[] = [];
 
   categories = [
     { key: 'All',       label: 'All Services' },
@@ -26,9 +28,21 @@ export class Directory {
 
   constructor(private svc: HotlineService, private sanitizer: DomSanitizer) {}
 
-  get filteredHotlines(): Hotline[] {
+ngOnInit(): void {
+  this.svc.getAll().subscribe(data => {
+    this.allHotlines = data;
+    this.applyFilter();
+  });
+  this.svc.clearCache();
+  this.svc.getAll().subscribe(data => {
+    this.allHotlines = data;
+    this.applyFilter();
+  });
+}
+
+  applyFilter(): void {
     const term = this.searchTerm.toLowerCase().trim();
-    return this.svc.getAll().filter(h => {
+    this.filteredHotlines = this.allHotlines.filter(h => {
       const inCategory = this.activeCategory === 'All' || h.category === this.activeCategory;
       const inSearch = !term ||
         h.name.toLowerCase().includes(term) ||
@@ -38,7 +52,12 @@ export class Directory {
     });
   }
 
-  toggleSave(id: number): void {
+  setCategory(key: string): void {
+    this.activeCategory = key;
+    this.applyFilter();
+  }
+
+  toggleSave(id: string): void {
     if (this.savedIds.has(id)) {
       this.savedIds.delete(id);
     } else {
@@ -46,7 +65,7 @@ export class Directory {
     }
   }
 
-  isSaved(id: number): boolean {
+  isSaved(id: string): boolean {
     return this.savedIds.has(id);
   }
 
@@ -80,7 +99,7 @@ export class Directory {
   }
 
   saveAllBookmarked(): void {
-    const saved = this.svc.getAll().filter(h => this.savedIds.has(h.id));
+    const saved = this.allHotlines.filter(h => this.savedIds.has(h._id!));
     if (saved.length === 0) {
       document.getElementById('hotline-list')?.scrollIntoView({ behavior: 'smooth' });
       return;
