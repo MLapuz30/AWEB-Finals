@@ -1,59 +1,154 @@
-# AwebFinalProject
+# RESQ — Emergency Hotline Directory
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+A full-stack emergency hotline directory built with Angular, Node.js, Express, and MongoDB Atlas. Includes a public directory and an admin dashboard for managing hotlines.
 
-## Development server
+---
 
-To start a local development server, run:
+## Prerequisites
 
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) v18 or higher
+- [Angular CLI](https://angular.dev/tools/cli)
+  ```bash
+  npm install -g @angular/cli
+  ```
+
+---
+
+## Environment Setup
+Create a `.env` file inside the `backend/` folder:
+
+```
+AWEB-Finals/
+└── backend/
+    └── .env   ← create this file
+```
+
+Add the following to your `.env` file:
+
+```env
+MONGO_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/hotline_db
+PORT=3000
+```
+
+To get your `MONGO_URI`:
+1. Go to [MongoDB Atlas](https://cloud.mongodb.com) and create a free account
+2. Create a free cluster (M0)
+3. Go to **Database Access** → Add a database user with a username and password
+4. Go to **Network Access** → Add IP Address → **Allow Access from Anywhere** (`0.0.0.0/0`)
+5. Go to your cluster → Click **Connect** → **Drivers**
+6. Copy the connection string and replace `<username>` and `<password>` with your credentials
+
+---
+
+## Installation
+### 1. Install backend dependencies
+```bash
+cd backend
+npm install
+```
+
+### 2. Install frontend dependencies
+```bash
+cd ..
+npm install
+```
+
+---
+
+## Database Seeding
+
+You need to seed the database before running the app.
+
+### Step 1 — Set your admin credentials
+Open `backend/src/seed-user.ts` and change the username and password:
+
+```typescript
+const ADMIN_USERNAME = 'your_username';   // ← change this
+const ADMIN_PASSWORD = 'your_password';   // ← change this
+```
+
+### Step 2 — Seed hotline data
+```bash
+cd backend
+npx ts-node src/seed.ts
+```
+You should see:
+```
+Connected to MongoDB Atlas
+Seeded 16 hotlines successfully!
+```
+
+### Step 3 — Seed admin user
+```bash
+npx ts-node src/seed-user.ts
+```
+You should see:
+```
+Connected to MongoDB Atlas
+Admin user "your_username" created successfully!
+```
+
+> Only run the seed scripts **once**. Running them again will overwrite existing data.
+
+---
+
+## Running the Application
+
+You need **two terminals** open at the same time.
+
+### Terminal 1 — Start Backend
+```bash
+cd backend
+npm run dev
+```
+
+You should see:
+```
+Connected to MongoDB Atlas
+Backend running at http://localhost:3000
+```
+
+### Terminal 2 — Start Frontend
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+Then open your browser and go to:
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Admin Access
 
-## Building
+Go to `http://localhost:4200/admin` and sign in with the credentials you set in `seed-user.ts`.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## Features
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Emergency hotline directory with search and category filters
+- Save contacts as `.vcf` files
+- Admin login authenticated via MongoDB
+- Full hotline CRUD (Create, Read, Update, Delete)
+- Categories: Police, Fire, Hospital, Ambulance, Barangay
+- Data stored in MongoDB Atlas (cloud)
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Notes
 
-```bash
-ng test
-```
+- Both the backend and frontend must be running at the same time
+- The backend runs on port `3000`, the frontend on port `4200`
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Tech Stack
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Frontend** — Angular 19, Tailwind CSS
+- **Backend** — Node.js, Express, TypeScript
+- **Database** — MongoDB Atlas
+- **Auth** — bcrypt password hashing
